@@ -1,0 +1,147 @@
+﻿@model ShopViewModel
+
+
+<br />
+<form asp-controller="Shop" asp-action="Change" enctype="multipart/form-data">
+    <input hidden asp-for="ShopId">
+
+    <div class="row ">
+        <div class=" col-6">
+            @if (Model.PhotoPath != null)
+            {
+
+                <img src="~/img/@Model.PhotoPath" alt="@Model.ShopName" />
+            }
+            else
+            {
+                <img src="~/img/shop.jpg" alt="shop" />
+            }
+
+        </div>
+        <div class=" col-6">
+            <input hidden asp-for="PhotoPath">
+            <div class="form-group">
+                <input asp-for="Photo" type="file" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class=" col-12 text-center">
+            <p class="font-weight-bold">
+                <h>@Html.DisplayNameFor(model => model.ShopName)</h>
+            </p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class=" col-6">
+            <p class="font-italic">
+                <h>@Model.ShopName</h>
+            </p>
+        </div>
+        <div class=" col-6">
+            <div class="form-group">
+                <input class="form-control" asp-for="ShopName" />
+                <span asp-validation-for="ShopName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class=" row">
+        <div class=" col-12 text-center">
+            <p class="font-weight-bold">
+                <h>@Html.DisplayNameFor(model => model.City)</h>
+            </p>
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class=" col-6">
+            <p class="font-italic">
+                @Model.City
+            </p>
+        </div>
+        <div class=" col-6">
+            <div class="form-group">
+                <input class="form-control" asp-for="City" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class=" row">
+        <div class=" col-12 text-center">
+            <p class="font-weight-bold">
+                <h>@Html.DisplayNameFor(model => model.Address)</h>
+            </p>
+        </div>
+
+    </div>
+    <div class=" row">
+        <div class=" col-6">
+            <p class="font-italic">
+                @Model.Address
+            </p>
+        </div>
+        <div class=" col-6">
+            <div class="form-group">
+                <input class="form-control" asp-for="Address" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class=" col-12 text-center">
+            <p class="font-weight-bold">
+                <h>@Html.DisplayNameFor(model => model.PhoneNumber)</h>
+            </p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class=" col-6">
+            <p class="font-italic">
+                @Model.PhoneNumber
+            </p>
+        </div>
+        <div class=" col-6">
+            <div class="form-group">
+                <input class="form-control" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class=" row">
+        <div class=" col-12 text-center">
+            <p class="font-weight-bold">
+                <h>@Html.DisplayNameFor(model => model.Email)</h>
+            </p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class=" col-6">
+            <p class="font-italic">
+                @Model.Email
+            </p>
+        </div>
+        <div class=" col-6">
+            <div class="form-group">
+                <input class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <input type="submit" value="Save Changes" class="btn btn-success" />
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.ShopId">Delete</a>
+
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

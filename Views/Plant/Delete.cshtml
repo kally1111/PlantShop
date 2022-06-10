@@ -1,0 +1,93 @@
+﻿@model InfoPlantViewModel
+
+<a asp-action="Get">Go back</a>
+<br />
+<h2>Are you sure you want to delete this?</h2>
+<br />
+<h2>Current Data</h2>
+
+@if (Model.PhotoPath != null)
+{
+
+    <img src="~/img/@Model.PhotoPath" alt="@Model.PlantName" />
+}
+else
+{
+    if (@Model.TypeOfPlant == "bush")
+    {
+        <img src="~/img/bush.jpg" alt="bush" />
+    }
+    else if (@Model.TypeOfPlant == "flower")
+    {
+        <img src="~/img/flower.jpg" alt="flower" />
+    }
+    else if (@Model.TypeOfPlant == "tree")
+    {
+        <img src="~/img/tree.png" alt="tree" />
+    }
+}
+
+<table id="Info">
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.PlantName)</h>
+        </td>
+        <td>
+            @Model.PlantName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Price)</h>
+        </td>
+        <td>
+            @Model.Price
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Description)</h>
+        </td>
+        <td>
+            @Model.Description
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.TypeOfPlant)</h>
+
+        </td>
+        <td>
+            @Model.TypeOfPlant
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.PlaceToPlant)</h>
+        </td>
+        <td>
+            @Model.PlaceToPlant
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Shop)</h>
+        </td>
+        <td>
+            <a asp-controller="Shop" asp-action="Details" asp-route-id="@Model.ShopId">
+                @Model.ShopName
+            </a>
+        </td>
+    </tr>
+
+</table>
+<a class="btn btn-danger" asp-action="ConfermedDelete" asp-route-id="@Model.PlantId">Delete</a>
+
+
+@*<form asp-action="ConfermedDelete">
+        <input type="hidden" asp-for="PlantId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">    Back to list of plants</a>
+    </form>*@

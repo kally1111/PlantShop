@@ -1,0 +1,60 @@
+﻿@model EmployeeViewModel
+
+
+<br />
+<br />
+<a asp-action="Index">Go to list of employees</a>
+<br />
+<br />
+
+   
+<table class="Info">
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.FirstName)</h>
+        </td>
+        <td>
+            @Model.FirstName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.LastName)</h>
+        </td>
+        <td>
+            @Model.LastName
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.PhoneNumber)</h>
+        </td>
+        <td>
+            @Model.PhoneNumber
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Email)</h>
+
+        </td>
+        <td>
+            @Model.Email
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Shop)</h>
+        </td>
+        <td>
+            <a asp-controller="Shop" asp-action="Details" asp-route-id="@Model.ShopId">
+                @Model.ShopName
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+

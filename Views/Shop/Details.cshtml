@@ -1,0 +1,63 @@
+﻿@model ShopViewModel
+
+<h2 style="align-items:center">@Model.ShopName </h2>
+
+@if (Model.PhotoPath != null)
+{
+    <img src="~/img/@Model.PhotoPath" alt="@Model.ShopName" class="img-fluid" style="width: 600px; height: 400px" />
+}
+else
+{
+    <img src="~/img/shop.jpg" alt="@Model.ShopName" class="img-fluid" style="width: 600px; height: 400px" />
+
+}
+<table id="Info">
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.ShopName)</h>
+        </td>
+        <td>
+            @Model.ShopName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.City)</h>
+        </td>
+        <td>
+            @Model.City
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Address)</h>
+        </td>
+        <td>
+            @Model.Address
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.PhoneNumber)</h>
+
+        </td>
+        <td>
+            @Model.PhoneNumber
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Email)</h>
+
+        </td>
+        <td>
+            @Model.Email
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a asp-controller="Plant" asp-action="GetByShop" asp-route-id="@Model.ShopId">List of products in @Model.ShopName</a>
+        </td>
+    </tr>
+   
+</table>

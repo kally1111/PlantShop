@@ -1,0 +1,59 @@
+﻿@model GetByShopPVM
+
+<div>
+    @using (Html.BeginForm("Plant", "Get", FormMethod.Post))
+        @foreach (var plant in Model.Query)
+        {
+            <div onclick="getInfoPlant('@plant.Id')">
+                <div class="card">
+                    <div class="container">
+                        @if (plant.PhotoPath != null)
+                        {
+
+                            <img src="~/img/@plant.PhotoPath" alt="@plant.PlantName" />
+                        }
+                        else
+                        {
+                            if (plant.TypeOfPlant == "bush")
+                            {
+                                <img src="~/img/bush.jpg" alt="bush" />
+                            }
+                            else if (plant.TypeOfPlant == "flower")
+                            {
+                                <img src="~/img/flower.jpg" alt="flower" />
+                            }
+                            else if (plant.TypeOfPlant == "tree")
+                            {
+                                <img src="~/img/tree.png" alt="tree" />
+                            }
+                        }
+                        <p>
+                            <h>@Html.DisplayNameFor(model => model.PlantName)</h>: @plant.PlantName
+
+                            <br />
+                            <h>@Html.DisplayNameFor(model => model.Price)</h>: @plant.Price
+                            <br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+</div>
+
+<ul class="pagination">
+
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+            <a class="page-link" href="@Url.Action("GetByShop", new {id=Model.ShopId, page = i })">@i</a>
+        </li>
+
+    }
+</ul>
+
+<script>
+    const getInfoPlant = id => {
+        window.location = `/Plant/InfoPlant?id=${id}`
+    }
+</script>

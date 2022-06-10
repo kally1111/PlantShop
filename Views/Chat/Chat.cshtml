@@ -1,0 +1,30 @@
+﻿
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div class="container">
+    <div id="userinfo" class="row">
+        <label for="username">Plase input your name</label>
+        <input type="text" class=" form-control" id="username" name="username" autocomplete="off" />
+        <button type="button" class="btn btn-block" onclick="SetUsername()">Join</button>
+
+    </div>
+    <div id="messagearea" class="row" style="display:none;">
+        <div>Join as: <b><span id="username1">Not Set</span></b></div>
+        <hr />
+        <div class="row">
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+        <hr />
+        <input type="text" id="message" autocomplete="off" />
+        <input type="button" id="sendButton" value="Send Message" />
+    </div>
+</div>
+
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/Chat.js"></script>

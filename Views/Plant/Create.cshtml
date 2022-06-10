@@ -1,0 +1,63 @@
+﻿@model CreatePlantViewModel
+
+
+<form asp-controller="Plant" asp-action="Create" enctype="multipart/form-data">
+   
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.PlantName)</h>
+        <input class="form-control" asp-for="PlantName" />
+        <span asp-validation-for="PlantName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.Price)</h>
+        <input class="form-control" asp-for="Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.Description)</h>
+        <input class="form-control" asp-for="Description" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.Photo)</h>
+        <input asp-for="Photo" type="file" />
+        <span asp-validation-for="Photo"></span>
+        <span asp-validation-for="Photo" class="text-danger"></span>
+    </div>
+    <br />
+    <div>
+        <h>@Html.DisplayNameFor(model => model.TypeOfPlant)</h>
+        <select asp-for="TypeOfPlant">
+            <options>------</options>
+            <option value="tree">tree </option>
+            <option value="bush">bush </option>
+            <option value="flower">flower </option>
+        </select>
+    </div>
+    <br />
+    <div>
+        <h>@Html.DisplayNameFor(model => model.PlaceToPlant)</h>
+        <select asp-for="PlaceToPlant">
+            <option value="garden">garden </option>
+            <option value="home">home </option>
+        </select>
+    </div>
+    <br />
+    <div class="form-group">
+        <select asp-for="ShopId" class="form-control" asp-items="ViewBag.ShopId"></select>
+    </div>
+    <br />
+
+
+    <input type="submit" class="btn btn-success" />
+
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

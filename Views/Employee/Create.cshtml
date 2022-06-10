@@ -1,0 +1,46 @@
+﻿@model EmployeeViewModel
+
+
+<form asp-controller="Employee" asp-action="Create">
+
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.FirstName)</h>
+        <input class="form-control" asp-for="FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.LastName)</h>
+        <input class="form-control" asp-for="LastName" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.PhoneNumber)</h>
+        <input class="form-control" asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.Email)</h>
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <h>@Html.DisplayNameFor(model => model.Password)</h>
+        <input class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <select asp-for="ShopId" class="form-control" asp-items="ViewBag.ShopId"></select>
+    </div>
+    <br />
+    <input type="submit" class="btn btn-success" />
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,76 @@
+﻿@model List<ShopViewModel>
+
+<a asp-controller="Plant" asp-action="Get">Go back</a>
+<br />
+<a asp-action="Create">Add shop</a>
+<br />
+@if (Model != null)
+{
+    foreach (var shop in Model)
+    {
+<div class="container">
+
+    @if (shop.PhotoPath != null)
+    {
+
+        <img src="~/img/@shop.PhotoPath" alt="@shop.ShopName" class="img-fluid" style="width: 350px; height: 300px" />
+    }
+    else
+    {
+      <img src="~/img/shop.jpg" alt="Photo of the shop" class="img-fluid" style="width: 350px; height: 300px" />
+    }
+
+    <table id="Info">
+        <tr>
+            <td>
+                <h>@Html.DisplayNameFor(model => shop.ShopName)</h>
+            </td>
+            <td>
+                @shop.ShopName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h>@Html.DisplayNameFor(ItemModel => shop.City)</h>
+            </td>
+            <td>
+                @shop.City
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h>@Html.DisplayNameFor(ItemModel => shop.Address)</h>
+            </td>
+            <td>
+                @shop.Address
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h>@Html.DisplayNameFor(ItemModel => shop.PhoneNumber)</h>
+
+            </td>
+            <td>
+                @shop.PhoneNumber
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h>@Html.DisplayNameFor(ItemModel => shop.Email)</h>
+
+            </td>
+            <td>
+                @shop.Email
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a asp-controller="Plant" asp-action="GetByShop" asp-route-id="@shop.ShopId">List of products in @shop.ShopName</a>
+            </td>
+        </tr>
+    </table>
+</div>
+    <br />
+    <br />
+    }
+}

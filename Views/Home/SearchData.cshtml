@@ -1,0 +1,56 @@
+﻿@model UpdateDataViewModel
+
+<hr />
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Plant" asp-action="Get">Go back to list of plants</a>
+    </div>
+    <div class="col-6">
+        <a asp-controller="Plant" asp-action="Create">Add new plant</a>
+    </div>
+</div>
+<form asp-controller="Plant" asp-action="UpdateData">
+    <p>
+        Find by plant name:
+        <input type="text" name="SearchString" value="@ViewData["FilterPlant"]" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+</form>
+
+<hr />
+
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Shop" asp-action="Index">Go back to list of Shops</a>
+    </div>
+    <div class="col-6">
+        <a asp-controller="Shop" asp-action="Create">Add new Shop</a>
+    </div>
+</div>
+<form asp-controller="Shop" asp-action="UpdateData">
+    <p>
+        Find by Shop name:
+        <input type="text" name="SearchString" value="@ViewData["FilterShop"]" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+</form>
+<hr />
+
+
+
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Employee" asp-action="Index">Go back to list of Employees</a>
+    </div>
+    <div class="col-6">
+        <a asp-controller="Employee" asp-action="Create">Add new Employee</a>
+    </div>
+</div>
+<form asp-controller="Employee" asp-action="UpdateData">
+    <p>
+        Find by Shop name:
+        <input type="text" name="SearchString" value="@ViewData["FilterEmployee"]" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+</form>
+<hr />

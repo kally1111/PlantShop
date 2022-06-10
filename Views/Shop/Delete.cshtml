@@ -1,0 +1,66 @@
+﻿@model ShopViewModel
+
+<a asp-action="Index">Go back to Shops</a>
+<br />
+<h2>Are you sure you want to delete this?</h2>
+<br />
+<h2>Current Data</h2>
+
+@if (Model.PhotoPath != null)
+{
+
+    <img src="~/img/@Model.PhotoPath" alt="@Model.ShopName" />
+}
+else
+{
+    <img scr="~/img/shop.jpg" alt="Shop" />
+}
+
+
+<table id="Info">
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.ShopName)</h>
+        </td>
+        <td>
+            @Model.ShopName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.City)</h>
+        </td>
+        <td>
+            @Model.City
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Address)</h>
+        </td>
+        <td>
+            @Model.Address
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.PhoneNumber)</h>
+
+        </td>
+        <td>
+            @Model.PhoneNumber
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h>@Html.DisplayNameFor(model => model.Email)</h>
+        </td>
+        <td>
+            @Model.Email
+        </td>
+    </tr>
+
+</table>
+<a class="btn btn-danger" asp-action="ConfermedDelete" asp-route-id="@Model.ShopId">Delete</a>
+

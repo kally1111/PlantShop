@@ -1,0 +1,73 @@
+﻿@model List<EmployeeViewModel>
+
+@if (Model == null || Model.Count == 0)
+{
+    <h1>No Found Employee</h1>
+    <a asp-controller="Home" asp-action="SearchData">Go back to Search</a>
+}
+else
+{
+    foreach (var employee in Model)
+    {
+        <div onclick="getInfoEmployee('@employee.Id')">
+            <div class="card">
+
+                <table id="Info">
+                    <tr>
+                        <td>
+                            <h>@Html.DisplayNameFor(model => employee.FirstName)</h>
+                        </td>
+                        <td>
+                            @employee.FirstName
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h>@Html.DisplayNameFor(ItemModel => employee.LastName)</h>
+                        </td>
+                        <td>
+                            @employee.LastName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h>@Html.DisplayNameFor(ItemModel => employee.PhoneNumber)</h>
+                        </td>
+                        <td>
+                            @employee.PhoneNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h>@Html.DisplayNameFor(ItemModel => employee.Email)</h>
+
+                        </td>
+                        <td>
+                            @employee.Email
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h>@Html.DisplayNameFor(ItemModel => employee.ShopName)</h>
+
+                        </td>
+                        <td>
+                            @employee.ShopName
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <br />
+            <br />
+        </div>
+    }
+}
+
+<script>
+    const getInfoEmployee = Id => {
+        window.location = `/Employee/DetailedInfo?Id=${Id}`
+    }
+</script>
+

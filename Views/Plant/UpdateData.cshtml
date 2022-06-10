@@ -1,0 +1,62 @@
+﻿@model List<UpdateDataPVM>
+
+
+
+
+@if (Model == null || Model.Count == 0)
+{
+<h1>No Found Products</h1>
+<a asp-controller="Home" asp-action="SearchData">Go back to Search</a>
+}
+else { 
+<div>
+    <h1>Found Products</h1>
+    @using (Html.BeginForm("Plant", "Get", FormMethod.Post))
+        @foreach (var plant in Model)
+        {
+            <div onclick="getInfoPlant('@plant.PlantId')">
+                <div class="card">
+                    <div class="container">
+                        @if (plant.PhotoPath != null)
+                        {
+
+                            <img src="~/img/@plant.PhotoPath" alt="@plant.PlantName" />
+                        }
+                        else
+                        {
+                            if (plant.TypeOfPlant == "bush")
+                            {
+                                <img src="~/img/bush.jpg" alt="bush" />
+                            }
+                            else if (plant.TypeOfPlant == "flower")
+                            {
+                                <img src="~/img/flower.jpg" alt="flower" />
+                            }
+                            else if (plant.TypeOfPlant == "tree")
+                            {
+                                <img src="~/img/tree.png" alt="tree" />
+                            }
+                        }
+                        <p>
+                            <h>Plant Name</h>: @plant.PlantName
+
+                            <br />
+                            <h>Price</h>: @plant.Price
+                            <br />
+                            <h>Shop Name</h>: @plant.ShopName
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+</div>
+}
+          
+
+<script>
+    const getInfoPlant = id => {
+        window.location = `/Plant/DetailedInfo?id=${id}`
+    }
+</script>
+

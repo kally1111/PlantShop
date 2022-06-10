@@ -1,0 +1,47 @@
+﻿@model List<EmployeeViewModel>
+
+
+<h2>Index</h2>
+
+@if (Model != null || Model.Count != 0)
+{
+    <table class="Info">
+        <thead>
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Shop Name
+                </th>
+                <th>
+                    Details
+                </th>
+</thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.LastName)
+                </td>
+
+                <td>
+                    <a asp-controller="Shop" asp-action="Details" asp-route-id="@employee.ShopId"> @Html.DisplayFor(modelItem => employee.ShopName)</a>
+                </td>
+                <td>
+                    <a asp-controller="Employee" asp-action="Details" asp-route-id="@employee.Id" >Detailes</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+

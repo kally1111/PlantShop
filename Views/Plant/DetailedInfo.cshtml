@@ -1,0 +1,178 @@
+﻿@model DetailedInfoPlantViewModel
+
+<a asp-action="Get">Go back</a>
+<br />
+<br />
+<form asp-controller="Plant" asp-action="Change" enctype="multipart/form-data">
+    <input hidden asp-for="PlantId">
+    
+        <div class="row ">
+            <div class=" col-6">
+                @if (Model.PhotoPath != null)
+                {
+
+                    <img src="~/img/@Model.PhotoPath" alt="@Model.PlantName" />
+                }
+                else
+                {
+                    if (@Model.TypeOfPlant == "bush")
+                    {
+                        <img src="~/img/bush.jpg" alt="bush" />
+                    }
+                    else if (@Model.TypeOfPlant == "flower")
+                    {
+                        <img src="~/img/flower.jpg" alt="flower" />
+                    }
+                    else if (@Model.TypeOfPlant == "tree")
+                    {
+                        <img src="~/img/tree.png" alt="tree" />
+                    }
+                }
+
+            </div>
+            <div class=" col-6">
+                <input hidden asp-for="PhotoPath">
+                <div class="form-group">
+                    <input asp-for="Photo" type="file" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    <hr />
+        <div class="row">
+            <div class=" col-12 text-center" >
+                <p class="font-weight-bold">
+                  <h>@Html.DisplayNameFor(model => model.PlantName)</h>
+                </p>
+            </div>
+        </div>
+        <div class=" row">
+            <div class=" col-6">
+                <p class="font-italic">
+                    <h>@Model.PlantName</h>
+                </p>
+            </div>
+            <div class=" col-6">
+                <div class="form-group">
+                    <input class="form-control" asp-for="PlantName" />
+                    <span asp-validation-for="PlantName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    <hr />
+        <div class=" row">
+            <div class=" col-12 text-center">
+                <p class="font-weight-bold">
+                    <h>@Html.DisplayNameFor(model => model.Price)</h>
+                </p>
+            </div>
+        </div>
+
+        <div class=" row">
+            <div class=" col-6">
+                <p class="font-italic">
+                @Model.Price
+                </p>
+            </div>
+            <div class=" col-6">
+                <div class="form-group">
+                    <input class="form-control" asp-for="Price" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    <hr />
+        <div class=" row">
+            <div class=" col-12 text-center">
+                <p class="font-weight-bold">
+                    <h>@Html.DisplayNameFor(model => model.Description)</h>
+                </p>
+            </div>
+
+        </div>
+        <div class=" row">
+            <div class=" col-6">
+                <p class="font-italic">
+                    @Model.Description
+                </p>
+            </div>
+            <div class=" col-6">
+                <div class="form-group">
+                    <input class="form-control" asp-for="Description" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    <hr />
+        <div class="row">
+            <div class=" col-12 text-center">
+                <p class="font-weight-bold">
+                <h>@Html.DisplayNameFor(model => model.TypeOfPlant)</h>
+                    </p>
+            </div>
+        </div>
+        <div class=" row">
+            <div class=" col-6">
+                <p class="font-italic">
+                    @Model.TypeOfPlant
+                </p>
+            </div>
+            <div class=" col-6">
+                <select asp-for="TypeOfPlant">
+                    <option value="tree">tree </option>
+                    <option value="bush">bush </option>
+                    <option value="flower">flower </option>
+                </select>
+            </div>
+        </div>
+    <hr />
+        <div class=" row">
+            <div class=" col-12 text-center">
+                <p class="font-weight-bold">
+                   <h>@Html.DisplayNameFor(model => model.PlaceToPlant)</h>
+                </p>
+            </div>
+        </div>
+        <div class=" row">
+            <div class=" col-6">
+                <p class="font-italic">
+                    @Model.PlaceToPlant
+                </p>
+            </div>
+            <div class=" col-6">
+                <select asp-for="PlaceToPlant">
+                    <options>------</options>
+                    <option value="garden">garden </option>
+                    <option value="home">home </option>
+                </select>
+            </div>
+        </div>
+    <hr />
+        <div class=" row">
+            <div class=" col-12 text-center">
+                <p class="font-weight-bold">
+                    <h>@Html.DisplayNameFor(model => model.Shop)</h>
+                </p>
+            </div>
+        </div>
+        <div class=" row">
+            <div class=" col-6">
+                <p class="font-italic">
+                    @Model.ShopName
+                </p>
+            </div>
+            <div class=" col-6">
+                <select asp-for="ShopId" class="form-control" asp-items="ViewBag.ShopId"></select>
+            </div>
+        </div>
+   
+    <input type="submit" value="Save Changes" class="btn btn-success" />
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.PlantId">Delete</a>
+
+</form>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
